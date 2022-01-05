@@ -21,7 +21,7 @@ app.get('/', function(request, response) {
   response.setHeader('Content-Type', 'text/html');
   response.render("index");
 });
-
+//Creating our dynamic pages.
 app.get('/createaboutartists', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
@@ -32,6 +32,14 @@ app.get('/post', function(request, response) {
   response.setHeader('Content-Type', 'text/html');
   response.render("post");
 });
+//Posting to post page.
+app.post('/post', function(request, response){
+  let titlename = request.body.titlename;
+  let artistname = request.body.artistname;
+  let datetime = request.body.datetime;
+  let photolink = request.body.photolink;
+  let artiststatement = request.body.artiststatement;
+})
 app.get('/artpage', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');

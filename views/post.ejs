@@ -1,1 +1,21 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<%- include('partials/navbar', {title:"Posting page"}) -%>
+<p> Post.ejs is working </p>
+<!-- Creating a post submission form. -->
+<h2>Post your art here.</h2>
+<form action = "/post" method = "POST">
+   <label for = "Title"> Title: </label>
+    <input type = "text" id = "Title" name = "titlename" value = ""> <br>
+   <label for = "Artist"> Artist: </label>
+    <input type = "text" id = "Artist" name = "artistname" value = ""> <br>
+   <!-- <label for = "Photo"> Photo: </label> -->
+   <label for = "Date"> Date: </label>
+    <input type = "text" id = "Date" name = "datetime" value = ""> <br>
+   <label for = "Photo"> Link to photo: </label>
+    <input type = "text" id = "Photo" name = "photolink" value = ""> <br>
+   <label for = "Artist_Statement"> Artist Statement: </label>
+    <input type = "text" id = "Artist_Statement" name = "artiststatement" value = ""> <br>
 
+
+    <input type = "submit" value = "Submit" >
+</form>
