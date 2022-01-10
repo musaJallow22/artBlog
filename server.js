@@ -32,6 +32,28 @@ app.get('/post', function(request, response) {
   response.setHeader('Content-Type', 'text/html');
   response.render("post");
 });
+app.get('/artpage/:titlename', function(request, response) {
+  let artPosts = JSON.parse(fs.readFileSync('data/artposts.json'));
+  let titlename = request.params.titlename;
+
+  if(artPosts[titlename]){
+
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render("artpage", {
+    art: artPosts[titlename]
+  });
+
+}
+else{
+    response.status(404);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("error", {
+      "errorCode":"404"
+    });
+  }
+});
+
 //Posting to post page.
 app.post('/post', function(request, response){
   let titlename = request.body.titlename;
@@ -39,7 +61,34 @@ app.post('/post', function(request, response){
   let datetime = request.body.datetime;
   let photolink = request.body.photolink;
   let artiststatement = request.body.artiststatement;
-})
+  if(titlename && artistname && datetime && photolink && artiststatement){
+    let artPosts = JSON.parse(fs.readFileSync('data/artposts.json'));
+    let artPost = {
+      "title":titlename,
+      "artist":artistname,
+      "date":datetime,
+      "photo":photolink,
+      "statement":artiststatement,
+    }
+
+  artPosts[titlename] = artPost;
+
+
+  fs.writeFileSync('data/artposts.json',JSON.stringify(artPosts));
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.redirect("/artpage/" + titlename);
+
+  }
+  else{
+      response.status(400);
+      response.setHeader('Content-Type', 'text/html')
+      response.render("error", {
+        "errorCode":"400"
+      });
+  }
+});
+
 app.get('/artpage', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
