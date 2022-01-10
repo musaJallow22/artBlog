@@ -1,16 +1,1 @@
-{
-  "test": {
-    "title": "test",
-    "artist": "testers",
-    "date": "randomday",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Check_Mark_CSS_Green.svg/640px-Check_Mark_CSS_Green.svg.png",
-    "statement": "Did this work?"
-  },
-  "test2": {
-    "title": "test2",
-    "artist": "testers",
-    "date": "randomday2",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Check_mark_2.svg/640px-Check_mark_2.svg.png",
-    "statement": "Did this work again?"
-  }
-}
+{"test":{"title":"test","artist":"testers","date":"randomday","photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Check_Mark_CSS_Green.svg/640px-Check_Mark_CSS_Green.svg.png","statement":"Did this work?"},"test2":{"title":"test2","artist":"testers","date":"randomday2","photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Check_mark_2.svg/640px-Check_mark_2.svg.png","statement":"Did this work again?"},"test3":{"title":"test3","artist":"testers","date":"randomday3","photo":"Gibberish.","statement":"Working?"}}
