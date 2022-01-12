@@ -2,3 +2,15 @@
 <%- include('partials/navbar', {title:"Trinity Art Blog"}) -%>
 <p> Hey, welcome to Trinity Art Blog (TAB).
   You can view art pieces by Trinity students here, provide feedback, and read up on some of the artists. </p>
+<!--Making photo cards with Bootstrap.-->
+<div class="card-columns">
+  <%for(let i = 0; i < artpieces.length; i++){%>
+  <div class="card">
+    <img class="card-img-top" src="<%=artpieces[i].photo%>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%=artpieces[i].title%></h5>
+      <p class="card-text"><%=artpieces[i].artists%></p>
+    </div>
+  </div>
+  <%}%>
+</div>

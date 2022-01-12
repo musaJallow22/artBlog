@@ -20,41 +20,50 @@ app.get('/', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render("index");
-
 });
+
+app.get('/index', function(request, response) {
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render("index");
+  let artGallery = JSON.parse(fs.readFileSync('data/artposts.json'));
+  let titlename = request.params.titlename;
+  let artArray = [];
+  for(i in artGallery){
+    let artObj = {
+      "title":i.title;
+      "artist":i.artist;
+      "photo": i.photo;
+    }
+    artArray.push(artObj);
+  }
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('index', {
+    artpieces: artGallery
+  });
+});
+
 //Creating our dynamic pages.
 app.get('/createaboutartists', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render("createaboutartists");
 });
+app.get('/pieces/:titlename', function(request, response){
+  let artInfo = JSON.parse(fs.readFileSync('data/artposts.json'));
+  let titlename = request.params.titlename;
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('artpage', {
+    art: artInfo[titlename]
+  });
+});
 app.get('/post', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render("post");
 });
-//Dynamic route that links to posted content.
-app.get('/artpage/:titlename', function(request, response) {
-  let artPosts = JSON.parse(fs.readFileSync('data/artposts.json'));
-  let titlename = request.params.titlename;
-
-  if (artPosts[titlename]) {
-
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html');
-    response.render("artpage", {
-      art: artPosts[titlename]
-    });
-
-  } else {
-    response.status(404);
-    response.setHeader('Content-Type', 'text/html')
-    response.render("error", {
-      "errorCode": "404"
-    });
-  }
-});
-
 //Posting to post page.
 app.post('/post', function(request, response) {
   let titlename = request.body.titlename;
@@ -62,35 +71,32 @@ app.post('/post', function(request, response) {
   let datetime = request.body.datetime;
   let photolink = request.body.photolink;
   let artiststatement = request.body.artiststatement;
-  if (titlename && artistname && datetime && photolink && artiststatement) {
-    let artPosts = JSON.parse(fs.readFileSync('data/artposts.json'));
-    let artPost = {
-      "title": titlename,
-      "artist": artistname,
-      "date": datetime,
-      "photo": photolink,
-      "statement": artiststatement,
-    }
-
-    artPosts[titlename] = artPost;
-
-
-    fs.writeFileSync('data/artposts.json', JSON.stringify(artPosts));
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html');
-    response.redirect("/artpage/" + titlename);
-
-  } else {
-    response.status(400);
-    response.setHeader('Content-Type', 'text/html')
-    response.render("error", {
-      "errorCode": "400"
-    });
+  //Writing it to the JSON.
+  let artInfo = JSON.parse(fs.readFileSync('data/artposts.json'));
+  let newPiece = {
+    "title": titlename,
+    "artist": artistname,
+    "date": datetime,
+    "photo": photolink,
+    "statement": artiststatement,
   }
+  artInfo[titlename] = newPiece;
+  fs.writeFileSync('data/artposts.json', JSON.stringify(artInfo));
+
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  //Redirecting.
+  response.redirect("/pieces/" + titlename);
+
+
 });
-
-
-
+/*
+app.get('/artpage', function(request, response) {
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render("artpage");
+});
+*/
 app.get('/aboutartists', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
