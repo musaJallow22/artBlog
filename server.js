@@ -17,30 +17,29 @@ app.set('view engine', 'ejs'); //specify templating library,
 
 //Setting landing page to index.ejs?
 app.get('/', function(request, response) {
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html');
-  response.render("index");
-});
-
-app.get('/index', function(request, response) {
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html');
-  response.render("index");
   let artGallery = JSON.parse(fs.readFileSync('data/artposts.json'));
-  let titlename = request.params.titlename;
   let artArray = [];
-  for(i in artGallery){
-    let artObj = {
-      "title":i.title;
-      "artist":i.artist;
-      "photo": i.photo;
-    }
-    artArray.push(artObj);
+  for(title in artGallery){
+    artArray.push(artGallery[title]);
   }
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render('index', {
-    artpieces: artGallery
+    artpieces: artArray
+  });
+});
+
+app.get('/index', function(request, response) {
+
+  let artGallery = JSON.parse(fs.readFileSync('data/artposts.json'));
+  let artArray = [];
+  for(title in artGallery){
+    artArray.push(artGallery[title]);
+  }
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('index', {
+    artpieces: artArray
   });
 });
 

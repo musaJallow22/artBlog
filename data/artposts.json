@@ -17,7 +17,7 @@
     "title": "test3",
     "artist": "testers",
     "date": "randomday3",
-    "photo": "Gibberish.",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Broccoli-tree.svg/640px-Broccoli-tree.svg.png",
     "statement": "Working?"
   },
   "Test4": {
@@ -33,5 +33,26 @@
     "date": "randomday6",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Green-checkmark-with-rounded-ends.svg/640px-Green-checkmark-with-rounded-ends.svg.png",
     "statement": "More spam."
+  },
+  "Test6": {
+    "title": "Test6",
+    "artist": "Tester",
+    "date": "randomday6",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Broccoli-tree.svg/640px-Broccoli-tree.svg.png",
+    "statement": "More spam."
+  },
+  "Test7": {
+    "title": "Test7",
+    "artist": "Tester",
+    "date": "randomday7",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Broccoli-tree.svg/640px-Broccoli-tree.svg.png",
+    "statement": "More spam."
+  },
+  "Test8": {
+    "title": "Test8",
+    "artist": "Tester",
+    "date": "randomday8",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Broccoli-tree.svg/640px-Broccoli-tree.svg.png",
+    "statement": "Testing."
   }
 }
