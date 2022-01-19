@@ -19,7 +19,7 @@ app.set('view engine', 'ejs'); //specify templating library,
 app.get('/', function(request, response) {
   let artGallery = JSON.parse(fs.readFileSync('data/artposts.json'));
   let artArray = [];
-  for(title in artGallery){
+  for (title in artGallery) {
     artArray.push(artGallery[title]);
   }
   response.status(200);
@@ -33,7 +33,7 @@ app.get('/index', function(request, response) {
 
   let artGallery = JSON.parse(fs.readFileSync('data/artposts.json'));
   let artArray = [];
-  for(title in artGallery){
+  for (title in artGallery) {
     artArray.push(artGallery[title]);
   }
   response.status(200);
@@ -44,12 +44,21 @@ app.get('/index', function(request, response) {
 });
 
 //Creating our dynamic pages.
+app.get('/comment', function(request, response) {
+  let commentInfo = JSON.parse(fs.readFileSync('data/comments.json'));
+  let comment = request.params.comment;
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('comment', {
+    comments: commentInfo[comment]
+  });
+});
 app.get('/createaboutartists', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render("createaboutartists");
 });
-app.get('/pieces/:titlename', function(request, response){
+app.get('/pieces/:titlename', function(request, response) {
   let artInfo = JSON.parse(fs.readFileSync('data/artposts.json'));
   let titlename = request.params.titlename;
   response.status(200);
@@ -63,6 +72,7 @@ app.get('/post', function(request, response) {
   response.setHeader('Content-Type', 'text/html');
   response.render("post");
 });
+
 //Posting to post page.
 app.post('/post', function(request, response) {
   let titlename = request.body.titlename;
@@ -89,17 +99,57 @@ app.post('/post', function(request, response) {
 
 
 });
-/*
-app.get('/artpage', function(request, response) {
+//Posting comments.
+app.post('/comment', function(request, response) {
+  let comment = request.body.comment;
+  let commenter = request.body.commenter;
+  let date = request.body.date;
+  let mood = request.body.mood;
+  let commentInfo = JSON.parse(fs.readFileSync('data/comments.json'));
+  let newComment = {
+    "comment": comment,
+    "commenter": commenter,
+    "date": date,
+    "mood": mood,
+  }
+  commentInfo[comment] = newComment;
+  fs.writeFileSync('data/comments.json', JSON.stringify(commentInfo));
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.render("artpage");
+  response.redirect("/index");
 });
-*/
-app.get('/aboutartists', function(request, response) {
+app.post('/createaboutartists', function(request, response) {
+  let artist = request.body.artist;
+  let time = request.body.time;
+  let piece = request.body.favphoto;
+  let aboutyou = request.body.aboutyou;
+  let artistInfo = JSON.parse(fs.readFileSync('data/artists.json'));
+  let newInfo = {
+    "artist": artist,
+    "time": time,
+    "piece": piece,
+    "aboutyou": aboutyou,
+
+  }
+  artistInfo[artist] = newInfo;
+  fs.writeFileSync('data/artists.json', JSON.stringify(artistInfo));
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.render("aboutartists");
+  response.redirect("/aboutartists");
+});
+
+app.get('/aboutartists', function(request, response) {
+  let artPage = JSON.parse(fs.readFileSync('data/artists.json'));
+  let artistArray = [];
+
+  for (artist in artistArray) {
+    artistArray.push(artPage[artist]);
+  }
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('aboutartists', {
+    aboutart: artistArray
+  });
 });
 
 app.get('/comments', function(request, response) {

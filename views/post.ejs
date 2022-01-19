@@ -1,21 +1,28 @@
+<head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <%- include('partials/navbar', {title:"Posting page"}) -%>
-<p> Post.ejs is working </p>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+</head>
 <!-- Creating a post submission form. -->
-<h2>Post your art here.</h2>
-<form action = "/post" method = "POST">
-   <label for = "Title"> Title: </label>
+<h2 class = "header" >Post your art here.</h2>
+      <div class="comment-bottom bg-white p-2 px-3 backdrop">
+<form action = "/post" class = "postform" method = "POST">
+   <label for = "Title" class = "stylized"> Title: </label>
     <input type = "text" id = "Title" name = "titlename" value = ""> <br>
-   <label for = "Artist"> Artist: </label>
+   <label for = "Artist" class = "stylized"> Artist: </label>
     <input type = "text" id = "Artist" name = "artistname" value = ""> <br>
    <!-- <label for = "Photo"> Photo: </label> -->
-   <label for = "Date"> Date: </label>
+   <label for = "Date" class = "stylized"> Date: </label>
     <input type = "text" id = "Date" name = "datetime" value = ""> <br>
-   <label for = "Photo"> Link to photo: </label>
+   <label for = "Photo" class = "stylized"> Link to photo: </label>
     <input type = "text" id = "Photo" name = "photolink" value = ""> <br>
-   <label for = "Artist_Statement"> Artist Statement: </label>
+   <label for = "Artist_Statement" class = "stylized"> Artist Statement: </label>
     <input type = "text" id = "Artist_Statement" name = "artiststatement" value = ""> <br>
 
-
-    <input type = "submit" value = "Submit" >
+    <br>
+    <input type = "submit" value = "Submit" class = "stylized" >
 </form>
+</div>

@@ -1,0 +1,26 @@
+{
+  "Tester": {
+    "artist": "Tester",
+    "time": "today(again)",
+    "piece": "Da Vinci.",
+    "aboutyou": "I am testing this application."
+  },
+  "Bleh.": {
+    "artist": "Bleh.",
+    "time": "Blehbleh.",
+    "piece": "Blehhhh.",
+    "aboutyou": "BLEH."
+  },
+  "Working?": {
+    "artist": "Working?",
+    "time": "maybe?",
+    "piece": "I don't know.",
+    "aboutyou": "Perhaps..."
+  },
+  "Hey.": {
+    "artist": "Hey.",
+    "time": "Yes?",
+    "piece": "How are you?",
+    "aboutyou": "Good, thank you."
+  }
+}

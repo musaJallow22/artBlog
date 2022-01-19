@@ -1,18 +1,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
 <%- include('partials/navbar', {title:"Trinity Art Blog"}) -%>
-<p> Hey, welcome to Trinity Art Blog (TAB).
+<p class = "stylized" > Hey, welcome to Trinity Art Blog (TAB).
   You can view art pieces by Trinity students here, provide feedback, and read up on some of the artists. </p>
 <!--Making photo cards with Bootstrap.-->
+<h3 class = "stylized h3modifier"> Preview of some art pieces </h3> <br>
 <div class="card-columns">
 
-  <%for(let i = 0; i < artpieces.length; i++){%>
+  <%for(let i = 0; i < 6; i++){%>
   <div class="card">
-    <img class="card-img-top" src="<%=artpieces[i].photo%>" alt="Card image cap">
+    <img class="card-img-top" src="<%=artpieces[i].photo%>" alt ="Card image cap"> <br>
+    <br>
     <div class="card-body">
-      <h5 class="card-title"><%=artpieces[i].title%></h5>
-      <p class="card-text"><%=artpieces[i].artist%></p>
+      <h5 class="card-title stylized centertext">Title: <%=artpieces[i].title%></h5>
+      <p class="card-text stylized centertext"> Author: <%=artpieces[i].artist%></p>
       <form action="http://localhost:3000/pieces/<%=artpieces[i].title%>" method="get">
-        <button type="submit" formaction="http://localhost:3000/pieces/<%=artpieces[i].title%>">Go to the piece.</button>
+        <button type="submit" formaction="http://localhost:3000/pieces/<%=artpieces[i].title%>" class = "stylized centertext">Go to the piece.</button>
       </form>
 
     </div>

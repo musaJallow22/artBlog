@@ -1,3 +1,27 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<%-include('partials/navbar', {title:"Trinity Art Blog"}) -%>
-<p> createaboutartists.ejs is working </p>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <%-include('partials/navbar', {title:"Trinity Art Blog"})-%>
+</head>
+<h2 class = "balancing"> Create an artist page. </h2>
+
+
+<div class="comment-bottom bg-white p-2 px-3 backdrop lower centering ">
+  <form action="/createaboutartists" method="POST">
+    <label for="Artist" class="stylized"> Artist: </label>
+    <input type="text" id="Artist" name="artist" value=""> <br>
+    <!-- <label for = "Photo"> Photo: </label> -->
+    <label for="Time" class="stylized"> Date: </label>
+    <input type="text" id="Date" name="time" value=""> <br>
+    <label for="Piece" class="stylized"> Favorite art: </label>
+    <input type="text" id="Photo" name="favphoto" value=""> <br>
+    <label for="AboutYou" class="stylized" > About You: </label>
+    <input type="text" id="Artist_Statement" name="aboutyou" value="" placeholder = "Tell us about yourself..."> <br>
+      <br>
+
+    <input type="submit" value="Submit" class = "stylized">
+  </form>
+</div>
