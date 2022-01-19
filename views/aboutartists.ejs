@@ -6,4 +6,10 @@
   <link rel="stylesheet" href="/css/style.css">
 <%- include('partials/navbar', {title:"Trinity Art Blog"}) -%>
 </head>
-<p> <%=aboutart[2].time%> </p>
+
+  <ul class="list-group list-group-flush">
+<%for(let i = 0; i < aboutart.length; i++){%>
+    <li class="list-group-item" href = "/individualart/<%=aboutart[i].artist%>">Artist piece.</li>
+
+    <%}%>
+  </ul>

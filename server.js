@@ -135,7 +135,7 @@ app.post('/createaboutartists', function(request, response) {
   fs.writeFileSync('data/artists.json', JSON.stringify(artistInfo));
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.redirect("/aboutartists");
+  response.redirect("/individualart/" + artist);
 });
 
 app.get('/aboutartists', function(request, response) {
@@ -158,6 +158,17 @@ app.get('/comments', function(request, response) {
   response.render("comments");
 });
 
+app.get('/individualartist/:artist', function(request, response) {
+  let aInfo = JSON.parse(fs.readFileSync('data/artists.json'));
+  let artist = request.params.artist;
+  console.log(aInfo[artist]);
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('individualartist', {
+    artinfotwo: aInfo[artist]
+  });
+
+});
 //In case of an error or invalid path.
 app.use("", function(request, response) {
   response.status(404);
