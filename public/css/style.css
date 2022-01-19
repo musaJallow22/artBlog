@@ -83,10 +83,11 @@ h2 {
   height: 50%;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 20px 25px;
 }
 .card{
   border-radius: 20px 25px;
-  border: 5px dashed black;
+  border: 5px dashed lightblue;
 }
 .lower {
   position: relative;

@@ -142,7 +142,7 @@ app.get('/aboutartists', function(request, response) {
   let artPage = JSON.parse(fs.readFileSync('data/artists.json'));
   let artistArray = [];
 
-  for (artist in artistArray) {
+  for (artist in artPage) {
     artistArray.push(artPage[artist]);
   }
   response.status(200);
