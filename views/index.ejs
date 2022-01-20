@@ -18,8 +18,8 @@
     <div class="card-body">
       <h5 class="card-title stylized centertext">Title: <%=artpieces[i].title%></h5>
       <p class="card-text stylized centertext"> Author: <%=artpieces[i].artist%></p>
-      <form action="http://localhost:3000/pieces/<%=artpieces[i].title%>" method="get">
-        <button type="submit" formaction="http://localhost:3000/pieces/<%=artpieces[i].title%>" class = "stylized centertext">Go to the piece.</button>
+      <form action="/pieces/<%=artpieces[i].title%>" method="get">
+        <button type="submit" formaction="/pieces/<%=artpieces[i].title%>" class = "stylized centertext">Go to the piece.</button>
       </form>
 
     </div>
