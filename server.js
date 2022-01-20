@@ -175,7 +175,6 @@ app.get('/comments', function(request, response) {
 app.get('/individualartist/:artist', function(request, response) {
   let aInfo = JSON.parse(fs.readFileSync('data/artists.json'));
   let artist = request.params.artist;
-  console.log(aInfo[artist]);
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
   response.render('individualartist', {
