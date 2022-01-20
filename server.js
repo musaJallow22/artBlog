@@ -116,7 +116,7 @@ app.post('/comment', function(request, response) {
   fs.writeFileSync('data/comments.json', JSON.stringify(commentInfo));
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.redirect("/index");
+  response.redirect("/commentpage");
 });
 app.post('/createaboutartists', function(request, response) {
   let artist = request.body.artist;
@@ -135,7 +135,21 @@ app.post('/createaboutartists', function(request, response) {
   fs.writeFileSync('data/artists.json', JSON.stringify(artistInfo));
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.redirect("/individualart/" + artist);
+  response.redirect("/individualartist/" + artist);
+});
+
+app.get('/commentpage', function(request, response) {
+  let commentPage = JSON.parse(fs.readFileSync('data/comments.json'));
+  let commentArray = [];
+
+  for (comment in commentPage) {
+    commentArray.push(commentPage[comment]);
+  }
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('commentpage', {
+    commentinfo: commentArray
+  });
 });
 
 app.get('/aboutartists', function(request, response) {
@@ -169,6 +183,8 @@ app.get('/individualartist/:artist', function(request, response) {
   });
 
 });
+
+
 //In case of an error or invalid path.
 app.use("", function(request, response) {
   response.status(404);
@@ -177,6 +193,9 @@ app.use("", function(request, response) {
     "errorCode": "404"
   });
 });
+
+
+
 
 //Start server.
 const port = process.env.PORT || 3000;

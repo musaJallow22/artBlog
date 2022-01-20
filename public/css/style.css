@@ -79,8 +79,8 @@ h2 {
 }
 .card-img-top {
   display: block;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 20px 25px;
@@ -128,4 +128,9 @@ h2 {
   position: relative;
   left: 600px;
   font-size: 30px;
+}
+.commentheader{
+  position: relative;
+  left: 450px;
+  font-size: 40px;
 }

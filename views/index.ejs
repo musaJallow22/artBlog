@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="/css/style.css">
 <%- include('partials/navbar', {title:"Trinity Art Blog"}) -%>
 <p class = "stylized" > Hey, welcome to Trinity Art Blog (TAB).
-  You can view art pieces by Trinity students here, provide feedback, and read up on some of the artists. </p>
+  You can view art pieces by Trinity students here, provide feedback, and read up on some of the artists. Submit some pieces to see the gallery.</p>
 <!--Making photo cards with Bootstrap.-->
 <h3 class = "stylized h3modifier"> Preview of some art pieces </h3> <br>
 <div class="card-columns">
 
-  <%for(let i = 0; i < 6; i++){%>
+  <%for(let i = 0; i < artpieces.length; i++){%>
   <div class="card">
     <img class="card-img-top bg-light" src="<%=artpieces[i].photo%>" alt ="Card image cap"> <br>
     <br>

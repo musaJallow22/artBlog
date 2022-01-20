@@ -7,8 +7,11 @@
 <%- include('partials/navbar', {title:"Trinity Art Blog"}) -%>
 </head>
 
-<%for(let i = 0; i < aboutart.length; i++){%>
+<%for(let i = 0; i < commentinfo.length; i++){%>
   <br>
-    <a href = "/individualartist/<%=aboutart[i].artist%>" class = 'stylized'><%=aboutart[i].artist%> About Page.</a>
+     <p class = 'stylized'>Comment: <%=commentinfo[i].comment%></p>
+          <p class = 'stylized'> Commenter: <%=commentinfo[i].commenter%></p>
+               <p class = 'stylized'>Date:<%=commentinfo[i].date%></p>
+                    <p class = 'stylized'>Mood: <%=commentinfo[i].mood%></p>
 
     <%}%>
